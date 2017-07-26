@@ -2,8 +2,10 @@ import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dialog;
 import java.awt.FlowLayout;
+import javax.swing.JSplitPane;
 import java.awt.Font;
 import java.awt.GridLayout;
+import java.awt.GridBagLayout;
 import java.awt.Image;
 import java.awt.Toolkit;
 import java.awt.datatransfer.DataFlavor;
@@ -268,11 +270,14 @@ public class xslt extends JFrame
 		if(!actualViewIsVertical) return;
 		
 		setVisible(false);
-		JPanel  mainPanelHor = new JPanel(new GridLayout(1, 3));
+//		GridLayout layout = new GridLayout(1, 3);
+		JSplitPane  mainPanelHor = new JSplitPane(JSplitPane.HORIZONTAL_SPLIT);
+		JSplitPane  mainPanelHor2 = new JSplitPane(JSplitPane.HORIZONTAL_SPLIT);
 		this.getContentPane().removeAll();
 		mainPanelHor.add(xmlInPanel);
-		mainPanelHor.add(xsltPanel);
-		mainPanelHor.add(outPanel);
+		mainPanelHor.add(mainPanelHor2);
+		mainPanelHor2.add(xsltPanel);
+		mainPanelHor2.add(outPanel);
 		this.getContentPane().add( BorderLayout.CENTER, mainPanelHor );
 		this.setSize(INITIAL_WIDTH, INITIAL_HEIGTH);	
 		setVisible(true);
